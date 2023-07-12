@@ -1,12 +1,13 @@
 # anonimiza
 Anonimiza datos personales. MML analiza sistematicamente texto (ej. en documentos  públicos del Estado)  y anonimiza según normativa de protección a datos personales. Así:
-* El Estado no tiene pretexto para cumplir con que sus actos son publicos, por regla general.
+* El Estado no tiene pretexto para cumplir con que sus actos son públicos (por regla general).
 * Las personas siempre recibirán inforamación del Estado.
+* El Estado se moderniza🤩 (empieza a hacerse eficiente (hasta que sea inecesario 🤘🔥✅)
+  
+Utilizando herramientas mágicas :) HuggingsFace, Langchain para gestionar LLM (Large Lenguaje Models) como OpenAI, se podría solucionar si de de forma abastracta hacer una planificación cognicitiva de,  con tareas jerarquerizadas (o no), razonar en como resolverlo.
 
-Utilizando herramientas mágicas :) que son gestionadas por Langchain. Por ejemplo, se puede de forma abastracta hacer una planificación cognicitiva de resolver primero:
-Qué vas para resolver un problmeatareas rutinarias de bcomo analisis en secuencias de usos de modelos MMLs (como las de @openAI) 
 
-de acá en adelante, en este doc, es una AI la que escribirá principalmente (en el resto del respositorio, wfc ;)
+...En este doc, de acá en adelantees, será una AI la que escribe mayopritariamente.
 
 
 ## Introducción
@@ -50,3 +51,24 @@ Para obtener más información sobre la anonimización de datos y la protección
 * 
 * LEY 20285 SOBRE ACCESO A LA INFORMACIÓN PÚBLICA https://www.bcn.cl/leychile/navegar?idNorma=276363]
 
+# El código.
+
+##Revisar:
+Hay casos de uso del estudio de Langchain que pueden ser utilizados en el código
+
+* Modificar salida (Ejemplo 3: de https://claude.ai/chat/07 ... db)
+Este callback modifica el texto generado antes de devolverlo, por ejemplo para filtrar palabras inapropiadas:
+
+python
+
+<code> from langchain.callbacks.base import BaseCallbackManager
+
+ class OutputModifier(BaseCallbackManager):
+     def on_call_finish(self, fn_name, output):
+         return output.replace("palabra_prohibidaXD", "[censurado]")
+
+ callback_manager = OutputModifier()
+ llm.add_callback_manager(callback_manager)
+ Cualquier ocurrencia de "palabra_prohibidaXD" será reemplazada por "[censurado]" en la salida final.
+
+<code>
